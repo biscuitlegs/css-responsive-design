@@ -1,7 +1,25 @@
 /* General */
 
+:root {
+    font-family: 'Roboto Slab', serif;
+    --black: #131313;
+    --white: #ffffff;
+    --grey: rgb(155, 155, 155);
+    --light-grey: rgb(238, 238, 238);
+    --yellow: rgb(255, 221, 51);
+    --orange: #f42;
+    --orange-background: rgba(255, 102, 0, 0.164);
+}
+
 .section-title {
-    margin: 30px 0;
+    margin: 30px 0 30px 10px;
+}
+
+.section-title a {
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 main section {
@@ -22,7 +40,15 @@ main section {
     display: flex;
     justify-content: space-between;
     height: 32px;
-    background-color: blue;
+    background-color: var(--black);
+    padding: 0 10px;
+}
+
+.thin-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: normal;
+    padding: 0.5em;
 }
 
 .thin-nav .left, .thin-nav .right {
@@ -36,7 +62,13 @@ main section {
     display: flex;
     justify-content: space-between;
     height: 48px;
-    background-color: chocolate;
+    background-color: var(--white);
+}
+
+.tall-nav a {
+    color: var(--grey);
+    text-decoration: none;
+    font-weight: normal;
 }
 
 .tall-nav .left, .tall-nav .right {
@@ -49,11 +81,29 @@ main section {
     width: 30%;
 }
 
+.tall-nav .right a {
+    padding: 0 15px;
+}
+
+.tall-nav .right::before {
+    content: "|";
+    width: 2px;
+    height: 100%;
+    background-color: var(--light-grey);
+    color: var(--light-grey);
+}
+
 .notification-link {
-    background-color: yellow;
+    background-color: var(--yellow);
     height: 28px;
     width: 100%;
     display: block;
+    color: var(--black);
+    padding: 5px 0 5px 18px;
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+    justify-items: start;
 }
 
 /* Headlines */
@@ -63,26 +113,9 @@ main section {
     grid-template-columns: 60% 1fr;
     grid-template-areas: "large small-top"
                          "large small-bottom";
-    height: 70vh;
-    margin: 108px 10px 0 10px;
-}
-
-@media (max-width: 800px) {
-    .headlines {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat (3, 1fr);
-        grid-template-areas: "large"
-                             "small-top"
-                             "small-bottom";
-    }
-
-    .headline-large header {
-        grid-template-rows: 1fr;
-    }
-
-    .headline-logo {
-        display: none;
-    }
+    height: 90vh;
+    margin: 110px 10px 0 10px;
+    grid-gap: 5px;
 }
 
 .headline-large header, .headline-small header {
@@ -92,6 +125,8 @@ main section {
 
 .headline-large {
     grid-area: large;
+    color: var(--white);
+    background: url('../images/joshua-lawrence-hk8W-TSoSU4-unsplash.jpg');
 }
 
 .headline-large header {
@@ -101,20 +136,25 @@ main section {
 
 .headline-logo {
     padding: 0.5em;
+    font-size: 80px;
+    font-weight: bold;
 }
 
 .headline-large-title {
     align-self: end;
     padding: 1em;
+    font-size: 50px;
 }
 
 .headline-small header {
+    color: var(--white);
     display: grid;
     align-items: end;
 }
 
 .headline-small-title {
     padding: 1em;
+    font-size: 25px;
 }
 
 .headline-small .top {
@@ -125,8 +165,12 @@ main section {
     grid-area: small-bottom;
 }
 
-.headlines > * {
-    border: 1px solid black;
+.headline-small.top header {
+    background: url('../images/minator-yang-DEhwkPYevhE-unsplash.jpg');
+}
+
+.headline-small.bottom header {
+    background: url('../images/kellen-riggin-SLZiNNkf9Kc-unsplash.jpg');
 }
 
 /* Latest News Articles */
@@ -134,34 +178,8 @@ main section {
 .latest-news-articles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-@media (max-width: 800px) {
-    .latest-news-articles {
-        grid-template-columns: 1fr;
-    }
-
-    .latest-news-article {
-        display: grid;
-        grid-template-columns: 100px, 1fr;
-        grid-template-rows: 50px 50px;
-        align-items: center;
-        grid-template-areas: "image title"
-                             "image details";
-    }
-
-    .latest-news-article-image {
-        grid-area: image;
-    }
-
-    .latest-news-article-title {
-        grid-area: title;
-    }
-
-    .latest-news-article .details {
-        grid-area: details;
-    }
-
+    grid-gap: 10px;
+    margin-top: 50px;
 }
 
 .latest-news-article {
@@ -173,7 +191,39 @@ main section {
     width: 100%;
     height: 134px;
     margin-bottom: 8px;
-    border: 2px dotted black;
+    background: url('../images/kellen-riggin-SLZiNNkf9Kc-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.latest-news-article .details {
+    line-height: 1.5em;
+    color: var(--grey);
+    text-decoration: none;
+    font-weight: thin;
+}
+
+.latest-news-article .details a {
+    color: var(--grey);
+    text-decoration: none;
+    font-weight: thin;
+}
+
+.latest-news-article .details a:hover {
+    color: var(--black);
+}
+
+.latest-news-article-title a {
+    line-height: 1.5em;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.latest-news-article-title a:hover {
+    color: var(--orange);
+    text-decoration: underline;
 }
 
 /* Funding */
@@ -192,12 +242,12 @@ main section {
 
 .funding-card {
     height: 300px;
-    background: rgb(255, 203, 144);
+    background: rgba(255, 178, 134, 0.308);
 }
 
 .funding-card-header {
     padding: 10px;
-    background: linear-gradient(rgb(206, 86, 6) 0, rgb(206, 86, 6) 40%, rgb(233, 186, 132) 40%, rgb(233, 186, 132));
+    background: linear-gradient(var(--orange) 0, var(--orange) 40%, var(--orange-background) 40%, var(--orange-background));
     display: grid;
     grid-template-columns: 70px 2fr;
     justify-items: start;
@@ -210,16 +260,28 @@ main section {
     width: 60px;
     height: 60px;
     grid-area: image;
-    background-color: darkcyan;
 }
 
 .funding-card-title {
     grid-area: title;
     padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--white);
 }
 
-.funding-card-series {
+.funding-amount {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.funding-name {
+    font-weight: light;
+}
+
+.funding-series {
     grid-area: series;
+    color: var(--grey);
 }
 
 .funding-stats {
@@ -234,7 +296,7 @@ main section {
     content: "";
     width: 100%;
     height: 2px;
-    background-color: darkmagenta;
+    background-color: var(--orange-background);
 }
 
 .funding-details {
@@ -262,10 +324,46 @@ main section {
 .fork-headline-large {
     width: 100%;
     height: 260px;
-    background-color: rgb(109, 109, 255);
+    background: url('../images/joshua-lawrence-hk8W-TSoSU4-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.fork-title-large {
+    padding-bottom: 10px;
+}
+
+.fork-title-large a {
+    font-size: 25px;
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.fork-headline-large-type {
+    color: var(--white);
+}
+
+.fork-headline-large-type a {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.fork-headline-large-author a {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+.fork-headline-large-title {
+    font-size: 25px;
+}
+
+.fork-headline-large-title a {
+    text-decoration: none;
+    color: var(--white);
 }
 
 .fork-headline-large > * {
@@ -273,7 +371,6 @@ main section {
 }
 
 .fork-headline-small {
-    background-color: crimson;
     display: grid;
     grid-template-columns: 1fr 100px;
     grid-template-rows: 100px;
@@ -282,55 +379,153 @@ main section {
 
 .fork-headline-small header {
     grid-area: header;
+    background: var(--orange-background);
+    padding: 0.5em;
 }
 
-.fork-headline-small header {
-    grid-area: header;
+.fork-headline-small-type {
+    color: var(--orange);
+    font-weight: light;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+
+.fork-headline-small-title a {
+    text-decoration: none;
+    color: var(--orange);
+    font-weight: bold;
 }
 
 .fork-headline-small-image {
     grid-area: image;
     width: 100px;
     height: 100px;
-    background-color: chartreuse;
 }
 
 .fork-article {
     margin: 5px 0;
     padding-bottom: 5px;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid var(--light-grey);
+}
+
+.fork-article-title a {
+    text-decoration: none;
+    color: var(--grey);
+    font-size: 15px;
 }
 
 /* Footer */
 
 .footer-navs {
     background: rgb(46, 46, 46);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
 }
 
 .social-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    width: 500px;
 }
 
 .social-nav > * {
-    margin: 0 20px;
     color: #fff;
 }
 
 .company-nav > * {
     margin: 0 10px;
-    color: #fff;
+    color: var(--grey);
+    text-decoration: none;
+    font-weight: 300;
 }
 
 .company-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .footer-info {
-    background-color: black;
+    background-color: var(--black);
     color: white;
     text-align: center;
+    padding: 30px 0;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--grey);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--black);
+    border: 2px solid var(--grey);
+}
+
+/* Media Queries */
+
+@media (max-width: 500px) {
+    .latest-news-articles {
+        grid-template-columns: 1fr;
+    }
+
+    .latest-news-article {
+        display: flex;
+    }
+
+    .latest-news-article .right {
+        padding-left: 20px;
+    }
+
+    .latest-news-article-image {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+        min-height: 75px;
+    }
+}
+
+@media (max-width: 550px) {
+    .headlines {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat (3, 1fr);
+        grid-template-areas: "large"
+                             "small-top"
+                             "small-bottom";
+    }
+
+    .headline-large header {
+        grid-template-rows: 1fr;
+    }
+
+    .headline-logo {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .thin-nav {
+        display: none;
+    }
+
+    .tall-nav .left {
+        width: 80%;
+    }
+
+    .notification-link {
+        height: 60px;
+        justify-items: center;
+    }
 }
