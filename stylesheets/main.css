@@ -11,6 +11,13 @@ main section {
 
 /* Main Nav */
 
+.main-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
 .thin-nav {
     display: flex;
     justify-content: space-between;
@@ -57,7 +64,25 @@ main section {
     grid-template-areas: "large small-top"
                          "large small-bottom";
     height: 70vh;
-    margin: 0 10px;
+    margin: 108px 10px 0 10px;
+}
+
+@media (max-width: 800px) {
+    .headlines {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat (3, 1fr);
+        grid-template-areas: "large"
+                             "small-top"
+                             "small-bottom";
+    }
+
+    .headline-large header {
+        grid-template-rows: 1fr;
+    }
+
+    .headline-logo {
+        display: none;
+    }
 }
 
 .headline-large header, .headline-small header {
@@ -109,6 +134,34 @@ main section {
 .latest-news-articles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 800px) {
+    .latest-news-articles {
+        grid-template-columns: 1fr;
+    }
+
+    .latest-news-article {
+        display: grid;
+        grid-template-columns: 100px, 1fr;
+        grid-template-rows: 50px 50px;
+        align-items: center;
+        grid-template-areas: "image title"
+                             "image details";
+    }
+
+    .latest-news-article-image {
+        grid-area: image;
+    }
+
+    .latest-news-article-title {
+        grid-area: title;
+    }
+
+    .latest-news-article .details {
+        grid-area: details;
+    }
+
 }
 
 .latest-news-article {
@@ -193,7 +246,7 @@ main section {
 
 .news-forks {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 20px;
 }
 
@@ -223,16 +276,16 @@ main section {
     background-color: crimson;
     display: grid;
     grid-template-columns: 1fr 100px;
-    grid-template-areas: "type image"
-                         "title image";
+    grid-template-rows: 100px;
+    grid-template-areas: "header image";
 }
 
-.fork-headline-small-type {
-    grid-area: type;
+.fork-headline-small header {
+    grid-area: header;
 }
 
-.fork-headline-small-title {
-    grid-area: title;
+.fork-headline-small header {
+    grid-area: header;
 }
 
 .fork-headline-small-image {
@@ -244,6 +297,8 @@ main section {
 
 .fork-article {
     margin: 5px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid grey;
 }
 
 /* Footer */
